@@ -1,0 +1,241 @@
+.dog-page {
+  min-height: calc(100vh - 86px);
+  padding: clamp(32px, 7vw, 88px) 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 18%, #fff2df 0, transparent 32%),
+    #fffaf4;
+}
+
+.dog-explorer {
+  width: min(100%, 1060px);
+  min-height: 500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1fr);
+  align-items: center;
+  gap: clamp(36px, 8vw, 96px);
+}
+
+.dog-copy {
+  padding: 20px 0;
+}
+
+.dog-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px;
+  color: #b75b39;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dog-eyebrow span {
+  font-size: 1.15rem;
+}
+
+.dog-copy h1 {
+  max-width: 530px;
+  margin: 0;
+  color: #29231f;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+
+.dog-description {
+  max-width: 390px;
+  margin: 22px 0 30px;
+  color: #756c65;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.dog-refresh {
+  width: auto;
+  min-height: 54px;
+  margin: 0;
+  padding: 0 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #c75d3b;
+  box-shadow: 0 8px 18px #c75d3b30;
+  color: #fff;
+  font: inherit;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.dog-refresh:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #aa482b;
+  box-shadow: 0 11px 22px #c75d3b40;
+}
+
+.dog-refresh:focus-visible,
+.dog-message button:focus-visible {
+  outline: 3px solid #e9a48d;
+  outline-offset: 3px;
+}
+
+.dog-refresh:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.dog-refresh span {
+  font-size: 1.25rem;
+}
+
+.dog-hint {
+  margin: 13px 0 0 4px;
+  color: #93887e;
+  font-size: 0.85rem;
+}
+
+.dog-photo-card {
+  position: relative;
+  padding: 15px 15px 42px;
+  border: 1px solid #efe3d7;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 24px 70px #573b251a;
+  transform: rotate(2deg);
+}
+
+.dog-photo-frame {
+  position: relative;
+  display: grid;
+  min-height: 330px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 18px;
+  background: #f6eee6;
+  aspect-ratio: 1 / 0.92;
+}
+
+.dog-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  display: block;
+  object-fit: cover;
+}
+
+.dog-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  color: #76685e;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.dog-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #e9d8c9;
+  border-top-color: #c75d3b;
+  border-radius: 50%;
+  animation: dog-spin 800ms linear infinite;
+}
+
+.dog-error > span {
+  font-size: 2rem;
+}
+
+.dog-error p {
+  margin: 0;
+}
+
+.dog-message button {
+  padding: 9px 15px;
+  border: 1px solid #c75d3b;
+  border-radius: 999px;
+  background: transparent;
+  color: #a94c30;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dog-card-caption {
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  left: 15px;
+  color: #75685f;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dog-card-caption span {
+  margin-right: 5px;
+  color: #c75d3b;
+}
+
+@keyframes dog-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .dog-page {
+    min-height: calc(100vh - 72px);
+    padding: 32px 20px 56px;
+  }
+
+  .dog-explorer {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .dog-copy {
+    padding: 0;
+  }
+
+  .dog-copy h1 {
+    max-width: 500px;
+  }
+
+  .dog-description {
+    margin: 16px 0 23px;
+  }
+
+  .dog-photo-card {
+    width: min(100%, 520px);
+    justify-self: center;
+    transform: rotate(1deg);
+  }
+
+  .dog-photo-frame,
+  .dog-photo {
+    min-height: 270px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dog-spinner {
+    animation-duration: 1800ms;
+  }
+
+  .dog-refresh {
+    transition: none;
+  }
+}

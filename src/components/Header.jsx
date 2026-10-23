@@ -1,5 +1,6 @@
 
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import './header.css'
 function Header(){
 
     return(
@@ -15,12 +16,14 @@ function Header(){
           backgroundColor: "aqua",
         }}>
           <h1>Abu Developer</h1>
-          <nav>
+          <nav style={{margin:"5px"}}>
             <Link to="/">Calculator</Link>
             <Link to="/login">Login</Link>
             <Link to="/products">Products</Link>
              <Link to="/util">Util Page</Link>
              <Link to="/products-page">New Product</Link>
+             <Link to="/extend-data">Api Data</Link>
+             
             
            
           </nav>

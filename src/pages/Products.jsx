@@ -1,6 +1,6 @@
 import {appProducts} from '../data/products.js'
 import ProductCard from '../components/ProductCard.jsx'
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 
 
@@ -22,7 +22,7 @@ export function Products() {
 useEffect(() => {
 fetch("https://dummyjson.com/quotes")
 .then((res) => res.json())
-.then((data) => setUsers(data))
+.then((data) => setUsers(data.quotes))
 .catch((err) => console.log(err));
 }, []); 
 
@@ -95,7 +95,7 @@ fetch("https://dummyjson.com/quotes")
           <hr/>
           <div>
             {
-              users.map((u)=>(<p>{u.quotes}</p>))
+              users.map((u)=>(<p>{u.quote}</p>))
             }
           </div>
             

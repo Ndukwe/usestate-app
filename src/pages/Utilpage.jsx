@@ -1,57 +1,53 @@
 
 import { useState, useEffect } from "react";
-
+import axios from "axios";
+import { BASE_URL } from "../data/constant";
 function UtilPage() {
   // Store users from the API
-  const [users, setUsers] = useState([]);
-
+  const [posts, setPosts] = useState([]);
+  const [dogs,setDogs]=useState();
+const [search,setSearch]=useState("");
   // Store loading status
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Function to fetch users
-    const getUsers = async () => {
-      try {
+  
 
-        const response = await fetch(
-          "https://dummyjson.com/quotes"
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        }
-
-        const data = await response.json();
-
-        setUsers(data.quotes);
-      } catch (error) {
-        console.log("Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getUsers();
-  }, []);
+  useEffect(()=>{
+   axios.get(`${BASE_URL}/posts`)
+   .then((res)=>{setPosts(res.data)})
+   .catch((error)=>console.log(`Error ${error}`));
+   console.log('useEffect running');
+   //another API
+   axios.get(`https://dog.ceo/api/breeds/image/random`)
+   .then((res)=>{setDogs(res.data)})
+   .then((error)=>{console.log(error)});
+  },[search]);
 
   return (
-    <div>
-      <h1>Users List</h1>
+  <>
+   <div>
+    <h2>Data from API{search}</h2>
 
-      {loading ? (
-        <p>Loading users...</p>
-      ) : (
-        users.map((user) => (
-          <div key={user.id}>
+    <section>
+      show random dog
+      <img src={dogs.message}/>
+    </section>
+    <section>
+<input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}/>
 
-            <h3>{user.quote}</h3>
-            
-           
-            <hr />
-          </div>
-        ))
-      )}
-    </div>
+{
+posts.map((post,i)=>(
+  <div key={i}>
+     <p>{post.title}</p>
+  </div>
+
+))
+
+}
+
+    </section>
+   </div>
+  </>
   );
 }
 

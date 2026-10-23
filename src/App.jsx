@@ -6,6 +6,9 @@ import {Routes,Route} from 'react-router-dom';
 import {Dashboard} from './pages/Dashboard.jsx'
 import {Products} from './pages/Products.jsx'
 import ProductsPage from './pages/ProductsPage.jsx'
+import UtilPage from './pages/Utilpage.jsx'
+import ExtendData from './pages/ExtendDataPage.jsx'
+import AddProducts from './pages/AddProducts.jsx'
 
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
      <Route path="/dashboard" element={<Dashboard/>}/>
      <Route path="/products" element={<Products/>}/>
        <Route path="/products-page" element={<ProductsPage/>}/>
+        <Route path="/util" element={<UtilPage/>}/>
+         <Route path="/extend-data" element={<ExtendData/>}/>
+          <Route path="/add-product" element={<AddProducts/>}/>
 
     
     </Routes>

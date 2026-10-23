@@ -4,7 +4,9 @@ import { useLocation } from "react-router-dom"
 export function Dashboard(){
    const location =useLocation();
 
-   const {userName,userEmail}=location.state;
+  // const {userName,userEmail}=location.state;
+  const userName=localStorage.getItem("userName");
+  const userEmail=localStorage.getItem("userEmail");
 
     return(
         <>
